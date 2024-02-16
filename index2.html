@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ed Tech Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .course-card {
+            width: 300px;
+            margin: 10px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .progress-bar {
+            height: 15px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            background-color: #007BFF;
+        }
+        .lock-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #ff0000; /* Red color for lock symbol */
+        }
+    </style>
+    <head>
+</head>
+
+<body>
+    <header>
+        <h1>Ed Tech Dashboard</h1>
+    </header>
+
+    <div class="dashboard-container" id="dashboard-container"></div>
+
+    <script>
+        // Sample data for courses
+        const courses = [ { name: 'Mathematics', instructor: 'Dr. Smith', progress: 75, fileName: 'math.html', isBought: false }, { name: 'Physics', instructor: 'Prof. Johnson', progress: 90, fileName: 'physics.html', isBought: true }, { name: 'Chemistry', instructor: 'Dr. Davis', progress: 50, fileName: 'chemistry.html', isBought: false },
+            // Add more courses as needed
+        ];
+
+    // Function to create a course card
+    function createCourseCard(course) {
+        const card = document.createElement('div');
+        card.classList.add('course-card');
+
+        const title = document.createElement('h2');
+        title.textContent = course.name;
+
+        const instructor = document.createElement('p');
+        instructor.textContent = 'Instructor: ' + course.instructor;
+
+        const progressContainer = document.createElement('div');
+        progressContainer.classList.add('progress-bar');
+
+        const progressBar = document.createElement('div');
+        progressBar.classList.add('progress-bar-fill');
+        progressBar.style.width = `${course.progress}%`;
+
+        progressContainer.appendChild(progressBar);
+
+        // Lock icon logic
+        const lockIcon = document.createElement('span');
+        lockIcon.classList.add('lock-icon');
+        lockIcon.innerHTML = '&#128274;'; // Unicode for lock symbol
+
+        if (!course.isBought) {
+            card.appendChild(lockIcon);
+            card.style.position = 'relative'; // Ensure the lock icon is positioned correctly
+            card.classList.add('locked-course'); // Add a class to style locked courses differently
+        }
+
+
+        card.appendChild(title);
+        card.appendChild(instructor);
+        card.appendChild(progressContainer);
+
+        // Add a click event listener to navigate to the respective HTML file or payment page
+        card.addEventListener('click', () => {
+            if (course.isBought) {
+                window.location.href = course.fileName;
+            } else {
+                // Redirect to payment page or show a payment modal
+                alert('Course not bought. Redirect to payment page.');
+            }
+        });
+
+        return card;
+    }
+
+    // Function to populate the dashboard with courses
+    function populateDashboard() {
+        const dashboardContainer = document.getElementById('dashboard-container');
+
+        courses.forEach(course => {
+            const card = createCourseCard(course);
+            dashboardContainer.appendChild(card);
+        });
+    }
+
+    // Call the function to populate the dashboard
+    populateDashboard();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!-- payment.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .payment-container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mock Payment Page</h1>
+    </header>
+
+    <div class="payment-container">
+        <label for="unlockCode">Enter Unlock Code:</label>
+        <input type="text" id="unlockCode" placeholder="Enter unlock code" required>
+
+        <button onclick="unlockCourse()">Unlock Course</button>
+    </div>
+
+    <script>
+        function unlockCourse() {
+            const enteredCode = document.getElementById('unlockCode').value;
+
+            // Check if the entered code is the mock unlock code
+            if (enteredCode === 'mockunlockcode') {
+                alert('Payment successful! Course unlocked.');
+                // Redirect to the dashboard or the unlocked course page
+                alert('Payment successful! Course unlocked.');
+                // Redirect to the dashboard or the unlocked course page
+                window.location.href = 'index2.html';
+
+                alert('Incorrect unlock code. Payment failed.');
+            }
+        }
+    </script>
+</body>
+
+</html>

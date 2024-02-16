@@ -1,0 +1,107 @@
+<!-- signup.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .signup-container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Sign Up</h1>
+    </header>
+
+    <div class="signup-container">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter your first name" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter your last name" required>
+
+        <label for="createUsername">Create Username:</label>
+        <input type="text" id="createUsername" placeholder="Choose a username" required>
+
+        <label for="createPassword">Create Password:</label>
+        <input type="password" id="createPassword" placeholder="Choose a password" required>
+
+        <!-- Other fields as needed -->
+
+        <button onclick="submitSignUp()">Submit</button>
+    </div>
+
+    <script>
+        function submitSignUp() {
+            // Gather user information
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const createUsername = document.getElementById('createUsername').value;
+            const createPassword = document.getElementById('createPassword').value;
+
+            // Create a CSV string (for simplicity, you can use a more robust method in a real-world scenario)
+            const csvData = `First Name,Last Name,Username,Password\n${firstName},${lastName},${createUsername},${createPassword}`;
+
+            // Save CSV data to a file (for simplicity, you can use server-side code to handle this)
+            const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.click();
+
+            // Redirect to authentication.html after successful signup
+            window.location.href = 'authentication.html';
+        }
+    </script>
+</body>
+
+</html>
