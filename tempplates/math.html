@@ -12,7 +12,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            transition: background-color 0.5s ease-in-out;
         }
 
         header {
@@ -31,6 +31,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
+            position: relative;
         }
 
         .chapter-card:hover {
@@ -40,6 +41,25 @@
         h2 {
             color: #333;
         }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #ddd;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .random-chapter-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -48,21 +68,27 @@
         <h1>Mathematics Course</h1>
     </header>
 
-    <div class="chapter-card" onclick="navigateToChapter('algebra.html')">
+    <div class="chapter-card" onclick="navigateToChapter('chapter1.html')">
         <h2>Chapter 1: Algebra</h2>
+        <div class="progress-bar" onclick="markChapterProgress(this)"></div>
     </div>
 
     <div class="chapter-card" onclick="navigateToChapter('calculus.html')">
         <h2>Chapter 2: Calculus</h2>
+        <div class="progress-bar" onclick="markChapterProgress(this)"></div>
     </div>
 
     <div class="chapter-card" onclick="navigateToChapter('geometry.html')">
         <h2>Chapter 3: Geometry</h2>
+        <div class="progress-bar" onclick="markChapterProgress(this)"></div>
     </div>
 
     <div class="chapter-card" onclick="navigateToChapter('trigonometry.html')">
         <h2>Chapter 4: Trigonometry</h2>
+        <div class="progress-bar" onclick="markChapterProgress(this)"></div>
     </div>
+
+    <button class="random-chapter-button" onclick="generateRandomChapter()">Random Chapter</button>
 
     <!-- Add more chapter cards as needed -->
 
@@ -70,6 +96,27 @@
         // Function to navigate to the respective chapter HTML file
         function navigateToChapter(fileName) {
             window.location.href = fileName;
+        }
+
+        // Function to mark chapter progress
+        function markChapterProgress(progressBar) {
+            progressBar.style.backgroundColor = '#4CAF50';
+        }
+
+        // Function to generate a random chapter
+        function generateRandomChapter() {
+            const chapterCount = 4; // Update this if more chapters are added
+            const randomChapterIndex = Math.floor(Math.random() * chapterCount) + 1;
+            const randomChapterFileName = `chapter${randomChapterIndex}.html`;
+            navigateToChapter(randomChapterFileName);
+        }
+
+        // Dynamic background color based on the time of day
+        const currentHour = new Date().getHours();
+        if (currentHour >= 6 && currentHour < 18) {
+            document.body.style.backgroundColor = '#f4f4f4'; // Day mode
+        } else {
+            document.body.style.backgroundColor = '#333'; // Night mode
         }
     </script>
 </body>
