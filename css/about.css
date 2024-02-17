@@ -1,0 +1,53 @@
+body, html{
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  }
+  
+  header {
+    text-align: center;
+    color: #11fe00;
+    padding: 60px 0;
+    background-color: #0000007d;
+  }
+  
+  
+  h1 {
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    height: 100%;
+  }
+  .left-rectangle {
+    flex: 1;
+    background-color: lightgray; /* Adjust as needed */
+    overflow: auto; /* Enable scrolling */
+  }
+  .model-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #model-canvas {
+    width: 80%; /* Adjust size of 3D model canvas */
+    height: 80%;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
