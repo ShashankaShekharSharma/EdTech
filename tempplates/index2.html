@@ -63,11 +63,47 @@
             font-size: 20px;
             color: #ff0000; /* Red color for lock symbol */
         }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid #007BFF;
+        }
     </style>
     <head>
 </head>
 
 <body>
+    <nav>
+        <div>
+            <h1>Ed Tech Dashboard</h1>
+        </div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Courses</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
     <header>
         <h1>Ed Tech Dashboard</h1>
     </header>
