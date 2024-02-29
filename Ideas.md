@@ -4,11 +4,11 @@
 2. **Profile Management:**
    - Allow users (students, teachers, and administrators) to create and manage their profiles.
 
-3. **Course Management:**
+3. **Course 
+   - Include multimediManagement:**
    - Offer a system to create, manage, and enroll in courses.
 
-4. **Interactive Content:**
-   - Include multimedia content like videos, interactive quizzes, and simulations to enhance learning.
+4. **Interactive Content:**a content like videos, interactive quizzes, and simulations to enhance learning.
 
 5. **Discussion Forums:**
    - Provide a platform for students to discuss topics, ask questions, and collaborate with peers.
