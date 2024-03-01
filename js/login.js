@@ -11,20 +11,19 @@ const firebaseConfig = {
 };
 
 //initializing firebase
-firebaseConfig.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 //reference for the database
 var loginFormDB = firebase.database().ref("loginForm-EdTech");
 
 document.getElementById("loginForm").addEventListener("submit", submitForm);
 
-function submitForm(e) {
-  e.preventDefault();
-
+function submitForm() {
   var email = getElementVal("newEmail");
   var password = getElementVal("newPassword");
 
-  saveMessages(email,password);
+  console.log(email, password);
+  saveMessages(email, password);
 }
 
 const saveMessages = (email, password) => {
