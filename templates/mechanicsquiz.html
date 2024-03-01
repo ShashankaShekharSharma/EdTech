@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanics Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .quiz-container {
+            margin-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .options {
+            margin-left: 20px;
+        }
+
+        #timer {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #900;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mechanics Quiz</h1>
+
+    <div class="quiz-container" id="quiz-container">
+        <div class="question" id="question">
+            <!-- Question will be displayed here -->
+        </div>
+
+        <div class="options" id="options">
+            <!-- Options will be displayed here -->
+        </div>
+
+        <div id="timer">Time Remaining: <span id="time">60</span> seconds</div>
+
+        <button onclick="submitAnswer()">Submit Answer</button>
+        <button onclick="returnToMainMenu()">Return to Main Menu</button>
+
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "What is Newton's first law of motion?",
+                options: ["An object at rest stays at rest", "Force equals mass times acceleration", "For every action, there is an equal and opposite reaction"],
+                correctAnswer: 0
+            },
+            {
+                question: "What is the formula for kinetic energy?",
+                options: ["KE = 1/2 * mv^2", "KE = mgh", "KE = Fd"],
+                correctAnswer: 0
+            },
+            // Add more questions as needed
+        ];
+
+        // Variables
+        let currentQuestion = 0;
+        let score = 0;
+        let timeLeft = 60;
+        let timer;
+
+        // Function to start the quiz
+        function startQuiz() {
+            displayQuestion();
+            timer = setInterval(updateTimer, 1000);
+        }
+
+        // Function to display the current question
+        function displayQuestion() {
+            const questionElement = document.getElementById("question");
+            const optionsElement = document.getElementById("options");
+            const currentQuizData = quizData[currentQuestion];
+
+            questionElement.innerHTML = currentQuizData.question;
+
+            optionsElement.innerHTML = "";
+            currentQuizData.options.forEach((option, index) => {
+                optionsElement.innerHTML += `<input type="radio" name="answer" value="${index}"> ${option}<br>`;
+            });
+        }
+
+        // Function to submit the answer
+        function submitAnswer() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+
+            if (selectedOption) {
+                const userAnswer = parseInt(selectedOption.value);
+
+                if (userAnswer === quizData[currentQuestion].correctAnswer) {
+                    score++;
+                }
+
+                currentQuestion++;
+
+                if (currentQuestion < quizData.length) {
+                    displayQuestion();
+                } else {
+                    endQuiz();
+                }
+            }
+        }
+
+        // Function to update the timer
+        function updateTimer() {
+            const timeElement = document.getElementById("time");
+            timeLeft--;
+
+            if (timeLeft >= 0) {
+                timeElement.textContent = timeLeft;
+            } else {
+                endQuiz();
+            }
+        }
+
+        // Function to end the quiz
+        function endQuiz() {
+            clearInterval(timer);
+
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = `Quiz completed! Your score is ${score} out of ${quizData.length}.`;
+
+            // You can add more logic here, such as displaying a message or redirecting the user.
+        }
+        function returnToMainMenu() {
+            window.location.href = "physics.html";
+        }
+
+        // Start the quiz when the page loads
+        window.onload = startQuiz;
+    </script>
+
+</body>
+</html>

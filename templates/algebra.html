@@ -1,0 +1,113 @@
+<!-- Algebra.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Course</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .chapter-card {
+            width: 300px;
+            margin: 10px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            position: relative;
+        }
+
+        .chapter-card:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .resource-link {
+            margin-top: 8px;
+            display: block;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .quiz-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Algebra Course</h1>
+    </header>
+
+    <div class="chapter-card" onclick="navigateToChapter('algebra_chapter1.html')">
+        <h2>Chapter 1: Introduction to Algebra</h2>
+        <a class="resource-link" href="videos/intro_to_algebra.mp4" target="_blank">Watch Video</a>
+        <a class="resource-link" href="pdfs/intro_to_algebra.pdf" download>Download PDF</a>
+        <button class="quiz-button" onclick="startQuiz('algebra_chapter1_quiz')">Take Quiz</button>
+    </div>
+
+    <div class="chapter-card" onclick="navigateToChapter('algebra_chapter2.html')">
+        <h2>Chapter 2: Equations and Inequalities</h2>
+        <a class="resource-link" href="videos/equations_inequalities.mp4" target="_blank">Watch Video</a>
+        <a class="resource-link" href="pdfs/equations_inequalities.pdf" download>Download PDF</a>
+        <button class="quiz-button" onclick="startQuiz('algebra_chapter2_quiz')">Take Quiz</button>
+    </div>
+
+    <div class="chapter-card" onclick="navigateToChapter('algebra_chapter3.html')">
+        <h2>Chapter 3: Polynomials</h2>
+        <a class="resource-link" href="videos/polynomials.mp4" target="_blank">Watch Video</a>
+        <a class="resource-link" href="pdfs/polynomials.pdf" download>Download PDF</a>
+        <button class="quiz-button" onclick="startQuiz('algebra_chapter3_quiz')">Take Quiz</button>
+    </div>
+
+    <!-- Add more chapter cards as needed -->
+
+    <script>
+        // Function to navigate to the respective chapter HTML file
+        function navigateToChapter(fileName) {
+            window.location.href = fileName;
+        }
+
+        // Function to start a quiz
+        function startQuiz(quizName) {
+            alert(`Starting ${quizName} quiz...`); // Replace with actual quiz logic
+        }
+
+        // Dynamic background color based on the time of day
+        const currentHour = new Date().getHours();
+        if (currentHour >= 6 && currentHour < 18) {
+            document.body.style.backgroundColor = '#f4f4f4'; // Day mode
+        } else {
+            document.body.style.backgroundColor = '#333'; // Night mode
+        }
+    </script>
+</body>
+
+</html>
