@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #fdc0a4cd;
+  background-color: #f9b8b8cd;
 }
 
 header {
@@ -36,7 +36,7 @@ main {
 button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #f59d8a;
+  background-color: #f1b1a3;
   color: #000000;
   border: none;
   border-radius: 5px;
