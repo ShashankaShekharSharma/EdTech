@@ -38,7 +38,14 @@ header {
   color: #000000;
   margin-top: 0;
 }
+.card.expanded {
+  transform: scale(1.1); /* Increase the card size */
+  z-index: 1;
+}
 
+.card.expanded .card-content {
+  display: block; /* Show detailed information */
+}
 .card p {
   color: #1d1d1d;
   margin-bottom: 0;
