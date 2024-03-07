@@ -42,16 +42,6 @@
             margin-left: 10px;
             display: none;
         }
-
-        .correct-answer {
-            color: green;
-            font-weight: bold;
-            display: none;
-        }
-
-        .buttons {
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -69,15 +59,10 @@
             <!-- Options will be displayed here -->
         </div>
 
-        <div class="correct-answer" id="correct-answer"></div>
-
         <div id="timer">Time Remaining: <span id="time">60</span> seconds</div>
 
-        <div class="buttons">
-            <button onclick="submitAnswer()">Submit Answer</button>
-            <button onclick="nextQuestion()">Next</button>
-            <button onclick="restartQuiz()">Restart Quiz</button>
-        </div>
+        <button onclick="submitAnswer()">Submit Answer</button>
+        <button onclick="restartQuiz()">Restart Quiz</button>
 
         <div id="result"></div>
     </div>
@@ -115,16 +100,13 @@
         function displayQuestion() {
             const questionElement = document.getElementById("question");
             const optionsElement = document.getElementById("options");
-            const correctAnswerElement = document.getElementById("correct-answer");
             const currentQuizData = quizData[currentQuestion];
 
             questionElement.innerHTML = currentQuizData.question;
 
             optionsElement.innerHTML = "";
-            correctAnswerElement.innerHTML = "";
-
             currentQuizData.options.forEach((option, index) => {
-                optionsElement.innerHTML += `<input type="radio" name="answer" value="${index}"> ${option}<br>`;
+                optionsElement.innerHTML += `<input type="radio" name="answer" value="${index}"> ${option} <span class="tick-mark">&#10004;</span><br>`;
             });
 
             // Hide tick marks initially
@@ -135,7 +117,6 @@
         // Function to submit the answer
         function submitAnswer() {
             const selectedOption = document.querySelector('input[name="answer"]:checked');
-            const correctAnswerElement = document.getElementById("correct-answer");
 
             if (selectedOption) {
                 const userAnswer = parseInt(selectedOption.value);
@@ -143,33 +124,19 @@
                 const tickMarks = document.querySelectorAll('.tick-mark');
                 tickMarks.forEach(mark => mark.style.display = 'none');
 
-                correctAnswerElement.innerHTML = `Correct Answer: ${quizData[currentQuestion].options[quizData[currentQuestion].correctAnswer]}`;
-                correctAnswerElement.style.display = 'block';
-
                 if (userAnswer === quizData[currentQuestion].correctAnswer) {
                     // Display the tick mark next to the correct answer
                     tickMarks[quizData[currentQuestion].correctAnswer].style.display = 'inline';
                     score++;
                 }
-            }
-        }
 
-        // Function to move to the next question or end the quiz
-        function nextQuestion() {
-            const correctAnswerElement = document.getElementById("correct-answer");
-            correctAnswerElement.innerHTML = "";
-            correctAnswerElement.style.display = 'none';
+                currentQuestion++;
 
-            const tickMarks = document.querySelectorAll('.tick-mark');
-            tickMarks.forEach(mark => mark.style.display = 'none');
-
-            currentQuestion++;
-            
-
-            if (currentQuestion < quizData.length) {
-                displayQuestion();
-            } else {
-                endQuiz();
+                if (currentQuestion < quizData.length) {
+                    displayQuestion();
+                } else {
+                    endQuiz();
+                }
             }
         }
 
@@ -190,9 +157,13 @@
             clearInterval(timer);
 
             const resultElement = document.getElementById("result");
-            resultElement.innerHTML = `Quiz completed! Your score is ${score} out of ${quizData.length}.`;
+            resultElement.innerHTML = `Quiz completed! Your score is ${score} out of ${quizData.length}.<br><br>Correct Answers:<br>`;
 
-            // You can add more logic here, such as displaying a message or redirecting the user.
+            // Display questions and correct answers
+            quizData.forEach((question, index) => {
+                resultElement.innerHTML += `<div>${index + 1}. ${question.question}<br>`;
+                resultElement.innerHTML += `Correct Answer: ${question.options[question.correctAnswer]}</div><br>`;
+            });
         }
 
         // Function to restart the quiz
