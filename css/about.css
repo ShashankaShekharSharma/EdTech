@@ -1,54 +1,74 @@
-body, html{
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #000000;
-  }
-  
-  header {
-    text-align: center;
-    color: #000000;
-    padding: 30px 0;
-    background-color: #ffffff96;
-  }
-  
-  
-  h1 {
-    margin: 0;
-  }
-  
-  .container {
-    display: flex;
-    height: 100%;
-  }
-  .left-rectangle {
-    flex: 2;
-    background-color: rgb(189, 189, 189); /* Adjust as needed */
-    overflow: auto; /* Enable scrolling */
-  }
-  .model-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #model-canvas {
-    width: 80%; /* Adjust size of 3D model canvas */
-    height: 80%;
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #b7a0a0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+header {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-rectangle {
+  width:45%;
+  margin: 30px auto; /* Added to horizontally center the left-rectangle */
+  display: flex; /* Added to center align cards */
+  flex-direction: column; /* Added to stack cards vertically */
+  align-items: center; /* Added to center align cards */
+}
+
+
+.card {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  display: flex; /* Added to make image and content align horizontally */
+  align-items: center; /* Added to vertically center image and content */
+  padding-top: 30px; /* Adjust top padding as needed */
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  color: #000000;
+  margin-top: 0;
+}
+
+.card p {
+  color: #1d1d1d;
+  margin-bottom: 0;
+}
+
+.professor-img {
+  width: 100px; /* Adjust as needed */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.tabs {
+  text-align: center;
+}
+
+.tab-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  background-color: #ddd;
+}
+
+.developer-img {
+  width: 100px; /* Adjust as needed */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}

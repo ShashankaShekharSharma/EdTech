@@ -1,31 +1,57 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Homepage</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/about.css" />
-  </head>
-  <body>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
     <header>
-      <h1 id="title">Edtech</h1>
+        <h1 id="title">The Faculty & Devs</h1>
     </header>
+    <nav class="tabs">
+        <button id="professors-tab" class="tab-button active" onclick="showContent('professors')">Professors</button>
+        <button id="developers-tab" class="tab-button" onclick="showContent('developers')">Developers</button>
+    </nav>
     <div class="container">
-      <div class="left-rectangle">
-        <!-- Content goes here -->
-        <p>This is some scrollable content.</p>
-      </div>
-      <div class="model-container">
-        <!-- Placeholder for the 3D model -->
-        <canvas id="model-canvas"></canvas>
-      </div> 
+        <div class="left-rectangle">
+            <div id="professors-content" class="content active">
+                <div class="card">
+                    <img src="profimg/images.jpg" alt="Professor 1" class="professor-img">
+                    <div class="card-content">
+                        <h2>Dr. Evelyn Sinclair</h2>
+                        <p>Dr. Evelyn Sinclair is a renowned archaeologist and professor of Ancient Civilizations at the prestigious Sterling University...</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="profimg/images.jpg" alt="Professor 2" class="professor-img">
+                    <div class="card-content">
+                        <h2>Professor Theodore Blackwood</h2>
+                        <p>Professor Theodore Blackwood is a brilliant physicist and esteemed faculty member at Quantum University...</p>
+                    </div>
+                </div>
+                <!-- Add more professors here -->
+            </div>
+            <div id="developers-content" class="content" style="display: none;">
+                <div class="card">
+                    <img src="profimg/images.jpg" alt="Developer 1" class="developer-img" style="width: 100px;">
+                    <div class="card-content">
+                        <h2>John Smith</h2>
+                        <p>John Smith is a passionate software developer with expertise in web development technologies such as HTML, CSS, and JavaScript...</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="profimg/images.jpg" alt="Developer 2" class="developer-img" style="width: 100px;">
+                    <div class="card-content">
+                        <h2>Jane Doe</h2>
+                        <p>Jane Doe is a skilled mobile app developer specializing in Android and iOS platforms. She has a strong background in mobile application design and development...</p>
+                    </div>
+                </div>
+                <!-- Add more developers here -->
+            </div>
+        </div>
     </div>
-  
-
-   
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <script type="module" src="js/about.js"></script>
-  </body>
+    <script src="js/about.js"></script>
+</body>
 </html>
