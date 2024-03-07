@@ -54,7 +54,7 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
 camera.position.y = 1
-camera.position.z = objToRender === "laptop" ? 10 : 500;
+camera.position.z = objToRender === "laptop" ? 5 : 500;
 
 //Add lights to the scene, so we can actually see the 3D model
 const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
