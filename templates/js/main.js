@@ -113,7 +113,7 @@ function getRandomColor() {
   return color;
 }
 document.getElementById("getStartedBtn").addEventListener("click", function() {
-  window.location.href = "templates/dashboard.html";
+  window.location.href = "signup.html";
 });
 
 
